@@ -64,5 +64,23 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vector Launch is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/vector-launch_stock/
+Vector Launch, Inc. (originally Vector Space Systems) was an American small-launch and space
+software company founded in February 2016 in Tucson, Arizona by Jim Cantrell, John Garvey, Shaun
+Coleman, Ken Sunshine and Eric Besnard. It developed the Vector-R and Vector-H micro-launch
+vehicles and GalacticSky, a software-defined-satellite platform. GalacticSky was marketed in 2016
+with a promised suite of satellite SDKs and APIs, but no developer portal, machine-readable
+specification, public GitHub organisation or client SDK was ever published.
+
+Vector halted operations in August 2019 and filed Chapter 11 on 13 December 2019. Lockheed Martin
+acquired the GalacticSky assets; the launch-vehicle assets went to a separate bidder. A relaunched
+entity re-emerged on 29 October 2020 and its shareholders voted a wind-down on 11 January 2021. On
+26 February 2026 Phantom Space — founded by Vector's original CEO Jim Cantrell — acquired the
+remaining Vector assets and intellectual property to accelerate its Daytona launch vehicle.
+
+**There is no API surface to enrich.** `vector-launch.com` is a dormant registered domain that fails
+TLS name validation and returns HTTP 404 on every path, including `/robots.txt`, `/openapi.json` and
+every `/.well-known/` location. The predecessor brand domain `vectorspacesystems.com` has lapsed and
+now redirects off-domain to an unrelated site, so it is deliberately not wired as a website pointer.
+The full probe record is in [`well-known/vector-launch-well-known.yml`](well-known/vector-launch-well-known.yml).
+
+This repository is retained as a historical record.

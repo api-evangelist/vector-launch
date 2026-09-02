@@ -1,0 +1,93 @@
+generated: '2026-09-02'
+method: probed
+source: >-
+  Direct HTTP probes of every host historically associated with Vector Launch Inc. Every
+  path was requested once, unauthenticated, with a browser User-Agent. No document was
+  served on any host, so NO WellKnown or SecurityTxt pointer is wired in apis.yml — this
+  file records a verified absence, not a presence.
+note: >-
+  Vector Launch Inc. ceased operations in August 2019 and filed Chapter 11 in December
+  2019. vector-launch.com no longer presents a valid TLS certificate for its own name
+  (curl error 60, "no alternative certificate subject name matches target host name") and
+  over plain HTTP the host answers 404 on EVERY path, including the site root, robots.txt
+  and all /.well-known/* locations. vectorspacesystems.com — the company's earlier brand —
+  lapsed and was re-registered by an unrelated party; it now 302s off-domain to
+  https://www.dolar138.com/, an Indonesian gambling site, and is therefore NOT probed for
+  documents and NOT wired as a company host. galacticsky.com, the domain matching Vector's
+  GalacticSky product name, serves an unrelated NetObjects-Fusion travel page from a
+  Malaysian host and is not controlled by Vector or its acquirer.
+
+hosts:
+- host: vector-launch.com
+  note: >-
+    Former primary company host. HTTPS fails TLS name validation; HTTP answers 404 with a
+    generic edge body ("Not Found - Request ID: ...") on every path requested, including /.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+
+- host: vectorspacesystems.com
+  note: >-
+    Lapsed and re-registered. The root 302s off-domain to https://www.dolar138.com/ (an
+    unrelated Indonesian gambling site), so no /.well-known/* path was probed — any 200 it
+    returned would belong to the domain's new owner, not to Vector Launch.
+  documents: []
+
+- host: galacticsky.com
+  note: >-
+    Name-matches Vector's GalacticSky software-defined-satellite product but is NOT Vector's
+    domain — it resolves to 118.88.26.9 and serves an unrelated static travel site generated
+    with NetObjects Fusion 10. Not probed for documents.
+  documents: []
+
+x-evidence:
+- url: https://vector-launch.com/
+  status: 000
+  note: TLS certificate name mismatch (curl error 60)
+- url: http://vector-launch.com/
+  status: 404
+- url: http://vector-launch.com/robots.txt
+  status: 404
+- url: http://vector-launch.com/openapi.json
+  status: 404
+- url: http://vector-launch.com/swagger.json
+  status: 404
+- url: http://vector-launch.com/llms.txt
+  status: 404
+- url: http://vector-launch.com/.well-known/agent-card.json
+  status: 404
+- url: https://vectorspacesystems.com/
+  status: 200
+  note: 302 chain terminates at https://www.dolar138.com/ — domain reassigned
+- url: https://galacticsky.com/
+  status: 200
+  note: unrelated third-party site, not Vector Launch
+- url: https://api.github.com/orgs/vector-launch
+  status: 404
+- url: https://api.github.com/orgs/vectorspacesystems
+  status: 404
+- url: https://api.github.com/orgs/galacticsky
+  status: 404
+- url: https://forgeglobal.com/vector-launch_stock/
+  status: 403
+  note: Cloudflare bot challenge on the secondary-market venue listing; venue page, not a company host
+checked: '2026-09-02'
